@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clasificación · Glifos</title>
+<meta name="description" content="Clasificación de Glifos por temporada y categoría: el podio y todos los participantes.">
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@300..600&family=Space+Mono:wght@400;700&display=swap">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css?v=20260707">
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar al contenido</a>
+
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="index.html">Glifos<span class="brand__dot"></span></a>
+    <nav class="nav__links" aria-label="Principal">
+      <a href="index.html">Glifo del día</a>
+      <a href="clasificacion.html" aria-current="page">Clasificación</a>
+      <a href="historico.html">Histórico</a>
+    </nav>
+    <a class="btn btn--ig btn--sm nav__cta" href="https://instagram.com/cajiquesi" target="_blank" rel="noopener">Jugar en Instagram</a>
+    <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+  <div class="nav__mobile"><div>
+    <a href="index.html">Glifo del día</a>
+    <a href="clasificacion.html">Clasificación</a>
+    <a href="historico.html">Histórico</a>
+    <a href="https://instagram.com/cajiquesi" target="_blank" rel="noopener">Jugar en Instagram →</a>
+  </div></div>
+</header>
+
+<main id="main">
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <div>
+          <p class="kicker reveal">La tabla</p>
+          <h1 class="section__title reveal">Clasi<em>ficación</em></h1>
+        </div>
+        <p class="section__lead reveal">Elige temporada y categoría. Verás el podio y a todos los participantes. Busca tu nombre para encontrarte al instante.</p>
+      </div>
+
+      <div class="controls" data-year-controls></div>
+      <div class="controls" data-cat-controls></div>
+
+      <div data-board-region>
+        <div class="podium" data-podium></div>
+        <div class="board__search"><input type="text" data-board-search placeholder="Busca tu usuario…" aria-label="Buscar usuario"></div>
+        <div class="board" data-board></div>
+      </div>
+
+      <noscript><p class="note" style="margin-top:2rem">Activa JavaScript para ver la clasificación interactiva.</p></noscript>
+
+      <p class="note reveal" style="margin-top:2.5rem"><b>Nota</b><br>Esta clasificación se actualiza al terminar cada temporada. Para el ranking en directo del día a día, la acción está en el Instagram de <a href="https://instagram.com/cajiquesi" target="_blank" rel="noopener" style="color:var(--c3);text-decoration:underline">@cajiquesi</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <div>
+      <div class="footer__brand">Glifos<em>.</em></div>
+      <p class="footer__meta" style="margin-top:.6rem">Un jeroglífico cada día · Adivina el nombre</p>
+    </div>
+    <div class="footer__right">
+      <nav class="footer__links" aria-label="Pie">
+        <a href="index.html">Glifo del día</a>
+        <a href="clasificacion.html">Clasificación</a>
+        <a href="historico.html">Histórico</a>
+        <a href="https://instagram.com/cajiquesi" target="_blank" rel="noopener">Instagram</a>
+      </nav>
+      <p class="footer__meta" style="margin-top:1rem">© <span data-year>2026</span> Glifos</p>
+    </div>
+  </div>
+</footer>
+
+<script defer src="lib/gsap.min.js"></script>
+<script defer src="lib/ScrollTrigger.min.js"></script>
+<script defer src="lib/data.js"></script>
+<script defer src="lib/manifest.js"></script>
+<script defer src="main.js?v=20260707"></script>
+</body>
+</html>

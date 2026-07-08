@@ -1,0 +1,27 @@
+CÓMO AÑADIR LAS IMÁGENES DE LOS JEROGLÍFICOS
+=============================================
+Guarda aquí la imagen de cada glifo con este nombre exacto:
+
+   AÑO-CATEGORIA-NUMERO.webp
+
+- CATEGORIA es "personajes" o "peliculas" (sin tilde, en minúscula)
+- NUMERO va con dos cifras: 01, 02, ... 15
+
+Ejemplos:
+   2025-personajes-01.webp   (glifo Nº 1 de Personajes 2025)
+   2025-personajes-07.webp
+   2025-peliculas-03.webp
+   2024-peliculas-12.webp
+
+En cuanto pongas la imagen con ese nombre, aparecerá sola en la web
+(en la ficha del glifo, en el histórico y en el modo al azar).
+Si un glifo no tiene imagen todavía, se muestra un marcador "¿??" y no pasa nada.
+
+Formato recomendado: .webp o .jpg (si usas .jpg, cambia también la extensión
+en el nombre). Tamaño ideal: ancho de 800–1200 px.
+
+CASO ESPECIAL — Sïrat (Películas 2025)
+--------------------------------------
+El glifo 15 tuvo dos versiones (segunda oportunidad):
+   2025-peliculas-15.webp    -> el difícil (primer intento)
+   2025-peliculas-15b.webp   -> el fácil / bis (segundo intento, la "b" al final)
