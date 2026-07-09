@@ -171,11 +171,37 @@
   function initRandom(){var host=$("[data-random]");if(!host)return;var pool=[];DATA.forEach(function(e){e.glyphs.forEach(function(g,i){pool.push({e:e,i:i,g:g,name:g.name});});});var cur=null;var title=$("[data-r-title]",host),stage=$("[data-r-stage]",host),input=$("[data-r-input]",host),fb=$("[data-r-fb]",host);function pick(){cur=pool[Math.floor(Math.random()*pool.length)];title.textContent=t("js.randTitle")+SLBLf(seasonOf(cur.e.category))+" "+cur.e.year;stage.innerHTML='<img src="'+glyphImg(cur.e,cur.i)+'" alt="Jeroglífico" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'grid\';"><div class="daily__ph" style="display:none"><div class="q3">¿ ? ?</div><p>Imagen por añadir</p></div>';input.value="";fb.textContent="";fb.className="fb";}function check(){if(!cur){pick();return;}var v=norm(input.value);if(!v)return;if(accepts(cur.g,input.value)){fb.textContent=t("js.randCorrect")+cur.name+t("js.emoji");fb.className="fb ok";}else{fb.textContent=t("js.randWrong");fb.className="fb no";}}$("[data-r-check]",host).addEventListener("click",check);$("[data-r-new]",host).addEventListener("click",pick);input.addEventListener("keydown",function(e){if(e.key==="Enter")check();});pick();}
 
   /* ---------- PAGE: Inicio ---------- */
-  function initHome(){var host=$("[data-home]");if(!host)return;var nc=$("[data-next-contest]");if(nc){if(CFG.nextContest){nc.innerHTML="🗓️ <b>"+t("js.nextPrefix")+"</b> · "+esc(CFG.nextContest);}else{nc.style.display="none";}}var d=CFG.dailyGlyph,dg=$("[data-daily]");if(dg){if(d){var stage=$("[data-daily-stage]",dg);if(d.image&&stage)stage.innerHTML='<img src="'+esc(d.image)+'" alt="Glifo del día">';var meta=$("[data-daily-meta]",dg);if(meta)meta.textContent=d.number?("Glifo Nº "+d.number):"Glifo de hoy";}else{var none=$("[data-daily-none]");if(none)none.style.display="";var has=$("[data-daily-has]");if(has)has.style.display="none";}}var strip=$("[data-spon-strip]");if(strip&&CFG.sponsors&&CFG.sponsors.length){strip.innerHTML='<span class="lbl">'+t("js.prizesFrom")+'</span>'+CFG.sponsors.map(function(s){return '<a class="spon-pill" href="'+esc(s.url||"#")+'"'+(s.url&&s.url!=="#"?' target="_blank" rel="noopener"':"")+'>'+esc(s.name)+'</a>';}).join("");}var totG=0,totP={};DATA.forEach(function(e){totG+=e.glyphs.length;e.participants.forEach(function(p){totP[norm(p.user)]=1;});});setCount("[data-stat-glyphs]",totG);setCount("[data-stat-contests]",DATA.length);setCount("[data-stat-players]",Object.keys(totP).length);}
+  function initHome(){var host=$("[data-home]");if(!host)return;var nc=$("[data-next-contest]");if(nc){if(CFG.nextContest){nc.innerHTML="🗓️ <b>"+t("js.nextPrefix")+"</b> · "+esc(CFG.nextContest);}else{nc.style.display="none";}}var d=CFG.dailyGlyph,dg=$("[data-daily]");if(dg){if(d){var stage=$("[data-daily-stage]",dg);if(d.image&&stage)stage.innerHTML='<img src="'+esc(d.image)+'" alt="Glifo del día">';var meta=$("[data-daily-meta]",dg);if(meta)meta.textContent=d.number?("Glifo Nº "+d.number):"Glifo de hoy";}else{var none=$("[data-daily-none]");if(none)none.style.display="";var has=$("[data-daily-has]");if(has)has.style.display="none";}}var strip=$("[data-spon-strip]");if(strip&&CFG.sponsors&&CFG.sponsors.length){strip.innerHTML='<span class="lbl">'+t("js.prizesFrom")+'</span>'+CFG.sponsors.map(function(s){var u=s.web||s.instagram||(s.url&&s.url!=="#"?s.url:"");return '<a class="spon-pill" href="'+esc(u||"#")+'"'+(u?' target="_blank" rel="noopener"':"")+'>'+esc(s.name)+'</a>';}).join("");}var totG=0,totP={};DATA.forEach(function(e){totG+=e.glyphs.length;e.participants.forEach(function(p){totP[norm(p.user)]=1;});});setCount("[data-stat-glyphs]",totG);setCount("[data-stat-contests]",DATA.length);setCount("[data-stat-players]",Object.keys(totP).length);}
   function setCount(sel,val){var el=$(sel);if(el)el.setAttribute("data-count",val);}
 
   /* ---------- PAGE: Premios ---------- */
-  function initSponsors(){var grid=$("[data-spon-grid]");if(!grid)return;var list=CFG.sponsors||[];if(!list.length){grid.innerHTML='<p class="muted">'+t("js.noSponsors")+'</p>';return;}grid.innerHTML=list.map(function(s){var logo=s.logo?'<div class="spon-card__logo"><img src="'+esc(s.logo)+'" alt="'+esc(s.name)+'"></div>':'<div class="spon-card__logo">'+esc((s.name||"?").charAt(0))+'</div>';var link=(s.url&&s.url!=="#")?'<a class="btn btn--ghost btn--sm" href="'+esc(s.url)+'" target="_blank" rel="noopener">'+t("js.visit")+'</a>':'';return '<div class="spon-card">'+logo+'<h3>'+esc(s.name)+'</h3>'+(s.prize?'<span class="prize">'+t("js.prizeLabel")+esc(s.prize)+'</span>':'')+link+'</div>';}).join("");}
+  var SPON_ICON={
+    web:'<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.8 2.6 15.2 0 18M12 3c-2.6 2.8-2.6 15.2 0 18"/></svg>',
+    ig:'<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>'
+  };
+  function sponLink(url,cls,icon,label){return '<a class="spon-link'+cls+'" href="'+esc(url)+'" target="_blank" rel="noopener">'+icon+'<span>'+esc(label)+'</span></a>';}
+  function initSponsors(){
+    var grid=$("[data-spon-grid]");if(!grid)return;
+    var list=CFG.sponsors||[];
+    if(!list.length){grid.innerHTML='<p class="muted">'+t("js.noSponsors")+'</p>';return;}
+    grid.innerHTML=list.map(function(s){
+      var web=s.web||(s.url&&s.url!=="#"?s.url:"");
+      var media=s.photo?'<img class="spon-card__photo" src="'+esc(s.photo)+'" alt="'+esc(s.name)+'" loading="lazy" onerror="this.outerHTML=\'<div class=&quot;spon-card__photo spon-card__photo--ph&quot;></div>\'">':'<div class="spon-card__photo spon-card__photo--ph"></div>';
+      var logo=s.logo?'<div class="spon-card__logo"><img src="'+esc(s.logo)+'" alt="'+esc(s.name)+'"></div>':'<div class="spon-card__logo">'+esc((s.name||"?").charAt(0))+'</div>';
+      var links=[];
+      if(web)links.push(sponLink(web,"",SPON_ICON.web,t("js.visit")));
+      if(s.instagram)links.push(sponLink(s.instagram," spon-link--ig",SPON_ICON.ig,"Instagram"));
+      return '<div class="spon-card">'+
+        '<div class="spon-card__media">'+media+logo+'</div>'+
+        '<div class="spon-card__body">'+
+          '<h3>'+esc(s.name)+'</h3>'+
+          (s.description?'<p class="spon-card__desc">'+esc(s.description)+'</p>':'')+
+          (s.prize?'<span class="prize">'+t("js.prizeLabel")+esc(s.prize)+'</span>':'')+
+          (links.length?'<div class="spon-card__links">'+links.join("")+'</div>':'')+
+        '</div>'+
+      '</div>';
+    }).join("");
+  }
 
   function boot(){if(window.__I18N__){safe(function(){window.__I18N__.apply();},"i18n");safe(function(){window.__I18N__.init();},"i18nInit");}safe(initPetro,"petro");safe(initYear,"year");safe(initNav,"nav");safe(initSplash,"splash");safe(initReveals,"reveals");safe(initModals,"modals");safe(initTiebreak,"tiebreak");safe(initHome,"home");safe(initConcurso,"concurso");safe(initHistorico,"historico");safe(initRandom,"random");safe(initSponsors,"sponsors");safe(initCounts,"counts");document.documentElement.classList.add("is-ready");}
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",boot);else boot();
