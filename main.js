@@ -179,7 +179,9 @@
   /* ---------- PAGE: Premios ---------- */
   var SPON_ICON={
     web:'<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.8 2.6 15.2 0 18M12 3c-2.6 2.8-2.6 15.2 0 18"/></svg>',
-    ig:'<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>'
+    ig:'<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>',
+    tiktok:'<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M16.5 3c.3 2 1.55 3.5 3.5 3.85V9.4c-1.3 0-2.5-.4-3.5-1.05v6.15A5.75 5.75 0 1 1 10.75 8.7v2.75a2.95 2.95 0 1 0 2.05 2.8V3h3.7z"/></svg>',
+    youtube:'<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 8.8l5 3.2-5 3.2z" fill="currentColor" stroke="none"/></svg>'
   };
   function sponLink(url,cls,icon,label){return '<a class="spon-link'+cls+'" href="'+esc(url)+'" target="_blank" rel="noopener">'+icon+'<span>'+esc(label)+'</span></a>';}
   function initSponsors(){
@@ -196,6 +198,8 @@
       var links=[];
       if(web)links.push(sponLink(web,"",SPON_ICON.web,t("js.visit")));
       if(s.instagram)links.push(sponLink(s.instagram," spon-link--ig",SPON_ICON.ig,"Instagram"));
+      if(s.tiktok)links.push(sponLink(s.tiktok," spon-link--tiktok",SPON_ICON.tiktok,"TikTok"));
+      if(s.youtube)links.push(sponLink(s.youtube," spon-link--youtube",SPON_ICON.youtube,"YouTube"));
       return '<div class="spon-card">'+
         '<div class="spon-card__media">'+media+logo+'</div>'+
         '<div class="spon-card__body">'+
