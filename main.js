@@ -186,7 +186,10 @@
     if(!list.length){grid.innerHTML='<p class="muted">'+t("js.noSponsors")+'</p>';return;}
     grid.innerHTML=list.map(function(s){
       var web=s.web||(s.url&&s.url!=="#"?s.url:"");
-      var media=s.photo?'<img class="spon-card__photo" src="'+esc(s.photo)+'" alt="'+esc(s.name)+'" loading="lazy" onerror="this.outerHTML=\'<div class=&quot;spon-card__photo spon-card__photo--ph&quot;></div>\'">':'<div class="spon-card__photo spon-card__photo--ph"></div>';
+      var photos=(s.photos&&s.photos.length)?s.photos:(s.photo?[s.photo]:[]);
+      var media=photos.length
+        ? '<div class="spon-card__gallery'+(photos.length>1?" spon-card__gallery--multi":"")+'">'+photos.map(function(ph){return '<img class="spon-card__photo" src="'+esc(ph)+'" alt="'+esc(s.name)+'" loading="lazy" onerror="this.style.display=\'none\'">';}).join("")+'</div>'
+        : '<div class="spon-card__photo spon-card__photo--ph"></div>';
       var logo=s.logo?'<div class="spon-card__logo"><img src="'+esc(s.logo)+'" alt="'+esc(s.name)+'"></div>':'<div class="spon-card__logo">'+esc((s.name||"?").charAt(0))+'</div>';
       var links=[];
       if(web)links.push(sponLink(web,"",SPON_ICON.web,t("js.visit")));
