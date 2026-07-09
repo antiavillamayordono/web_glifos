@@ -119,7 +119,7 @@ html:not(.is-ready) .reveal{opacity:1!important;transform:none!important}
 .section--band{background:var(--ink);color:var(--bg)}
 .section__head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:2rem}
 .section__title{font-family:var(--serif);font-weight:600;font-size:clamp(1.9rem,5vw,3.4rem);line-height:1;letter-spacing:-.03em}
-.section__title em{font-style:normal;color:var(--teal)}
+.section__title em{font-style:normal;color:inherit}
 .section--band .section__title em{color:var(--mustard)}
 .section__lead{max-width:52ch;color:var(--ink2);font-size:1.05rem}
 .section--band .section__lead{color:color-mix(in srgb,var(--bg) 78%,transparent)}
