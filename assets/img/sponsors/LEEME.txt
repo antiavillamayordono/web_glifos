@@ -1,0 +1,19 @@
+CÓMO AÑADIR LAS IMÁGENES DE LOS PATROCINADORES
+==============================================
+Aquí van las imágenes de cada negocio patrocinador. Hay dos tipos:
+
+1) FOTO (cabecera de la tarjeta) — apaisada, se recorta a lo ancho.
+   Tamaño ideal: 800×450 px aprox. (formato 16:9).
+
+2) LOGO (chapa cuadrada sobre la foto) — cuadrado.
+   Tamaño ideal: 200×200 px. Fondo transparente o claro.
+
+Nómbralas como quieras (mejor sin espacios ni tildes) y pon su ruta en
+lib/manifest.js, en el patrocinador correspondiente. Por ejemplo:
+
+   photo: "assets/img/sponsors/sograndio.webp"
+   logo:  "assets/img/sponsors/sograndio-logo.webp"
+
+Recomendado: convierte las imágenes a .webp (pesan menos), igual que los
+glifos. Si un patrocinador no tiene foto, se muestra un fondo decorativo;
+si no tiene logo, se muestra la inicial de su nombre. Todo es opcional.
