@@ -263,6 +263,8 @@ html:not(.is-ready) .reveal{opacity:1!important;transform:none!important}
 .spon-link svg{flex:none}
 .spon-link:hover{transform:translateY(-2px)}
 .spon-link--ig:hover{background:var(--coral);color:#fff}
+.spon-link--tiktok:hover{background:var(--ink);color:#fff}
+.spon-link--youtube:hover{background:#c4302b;color:#fff;border-color:#c4302b}
 @media(min-width:720px){.spon-grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1040px){.spon-grid{grid-template-columns:repeat(3,1fr)}}
 
