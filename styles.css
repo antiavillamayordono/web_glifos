@@ -169,7 +169,7 @@ html:not(.is-ready) .reveal{opacity:1!important;transform:none!important}
 .dot.hit{background:var(--green)}.dot.miss{background:var(--coral)}.dot.none{background:var(--bg2)}.dot.star{background:var(--green);box-shadow:0 0 0 2px var(--mustard) inset}
 
 .qwrap{overflow-x:auto;border:2.5px solid var(--ink);border-radius:16px;background:var(--paper);-webkit-overflow-scrolling:touch}
-.q{border-collapse:separate;border-spacing:0;min-width:840px;width:100%;font-size:.82rem}
+.q{border-collapse:separate;border-spacing:0;width:100%;font-size:.82rem}
 .q th,.q td{padding:0;text-align:center}
 .q thead th{position:sticky;top:0;background:var(--bg2);border-bottom:2px solid var(--ink);font-family:var(--mono);font-weight:400;padding:.5rem .2rem;vertical-align:middle;z-index:1}
 .q .corner{position:sticky;left:0;z-index:4;background:var(--bg2);text-align:left;padding-left:.9rem;min-width:150px;font-family:var(--mono);font-size:.58rem;letter-spacing:.08em}
@@ -365,7 +365,7 @@ html:not(.is-ready) .reveal{opacity:1!important;transform:none!important}
   /* pista visual de que hay más a la derecha */
   .qwrap::after{content:"";position:sticky;top:0;right:0;float:right;width:26px;height:100%;pointer-events:none;
     background:linear-gradient(to right,transparent,color-mix(in srgb,var(--ink) 12%,transparent));margin-left:-26px}
-  .q{min-width:680px;font-size:.8rem}
+  .q{font-size:.8rem}
   .q .corner,.q tbody th.name{min-width:118px;padding-left:.6rem}
   .q .numbtn{width:32px;height:32px;font-size:.82rem}        /* nº más grande para el dedo */
   .q .achead{min-width:54px}
