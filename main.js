@@ -43,7 +43,12 @@
   function profileOf(user){
     var key=norm(user);
     var a={user:user,hits:0,misses:0,stars:0,contests:0,best:null,gold:0,silver:0,bronze:0,editions:[]};
+    var finished=0;
     DATA.forEach(function(e){
+      // Los logros del perfil solo cuentan ediciones ya terminadas (en el histórico).
+      // La edición en curso (solo en la clasificación) no suma hasta que acabe.
+      if(isActiveEd(e))return;
+      finished++;
       var p=e.participants.filter(function(x){return norm(x.user)===key;})[0]; if(!p)return;
       var h=hits(p,e),m=misses(p,e),s=starsOf(p,e);
       a.hits+=h;a.misses+=m;a.stars+=s;a.contests++;
@@ -52,7 +57,7 @@
       a.editions.push({year:e.year,category:e.category,title:editionTitle(e),pos:p.pos,hits:h,stars:s});
     });
     a.editions.sort(function(x,y){return (y.year+SRANK[y.category]/10)-(x.year+SRANK[x.category]/10);});
-    a.loyalty = DATA.length? a.contests/DATA.length : 0;
+    a.loyalty = finished? a.contests/finished : 0;
     a.top5 = a.editions.filter(function(x){return x.pos<=5;}).length;
     a.top10 = a.editions.filter(function(x){return x.pos<=10;}).length;
     return a;
